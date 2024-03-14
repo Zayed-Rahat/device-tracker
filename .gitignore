@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# pipenv
+.env
+
+
+
+# Django Ignore
+db.sqlite3
+.vscode
+.idea
+*.pyc
+media/
+tracker/migrations/*
