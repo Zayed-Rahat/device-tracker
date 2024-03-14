@@ -2,20 +2,13 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .models import Company, Device, Employee, DeviceAssign
 from .serializers import (
-    CompanySerializer, DeviceSerializer, EmployeeSerializer, DeviceAssignSerializer
+   UserSerializer, CompanySerializer, DeviceSerializer, EmployeeSerializer, DeviceAssignSerializer
 )
-
-from django.contrib.auth import get_user_model
 
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import serializers
 
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = get_user_model()
-        fields = ('id', 'username')
 
 
 class UserAPIView(RetrieveAPIView):

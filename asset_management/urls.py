@@ -1,14 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from tracker.views import *
 
 urlpatterns = [
 
     path('user/', UserAPIView.as_view(), name='user'),
-
     # for admin
-    path("admin/", admin.site.urls),
-
+    path('admin/', admin.site.urls),
 
     # Company URLs
     path('companies/', CompanyListCreateView.as_view(), name='company-list-create'),
@@ -24,8 +23,13 @@ urlpatterns = [
     path('devices/<int:pk>/', DeviceRetrieveUpdateDestroyView.as_view(), name='device-retrieve-update-destroy'),
     path('devices/<int:pk>/assign/', DeviceAssignView.as_view(), name='device-assign'),
 
-    
+
     # for api authentications
-    # path('api/', include('rest_framework.urls')),
+    path('api-auth/', include('rest_framework.urls')),
+
+    # for swagger
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+  
 
 ]

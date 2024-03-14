@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # External Packages
     "rest_framework",
+    "drf_spectacular",
     
     # Internal Apps
     'tracker',
@@ -115,3 +116,22 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 20,
+}
+
+# for swagger
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Device Tracker API',
+    'DESCRIPTION': """
+    1. The application might be used by several companies \n
+    2. Each company might add all or some of its employees \n
+    3. Each company and its staff might delegate one or more devices to employees for
+    a certain period of time\n
+    4. Each company should be able to see when a Device was checked out and returned\n
+    5. Each device should have a log of what condition it was handed out and returned.\n """,
+    'SERVE_INCLUDE_SCHEMA': False,
+}
