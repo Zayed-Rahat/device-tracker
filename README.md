@@ -53,4 +53,4 @@ This implementation has 4 main models: Company, Device, Employee, and DeviceAssi
 
 `Employess API Routes`
 
-![3](https://github.com/Zayed-Rahat/device-tracker/blob/main/UI_SS/employees.png)
+![3](https://github.com/Zayed-Rahat/device-tracker/blob/main/UI_SS/employees_api.png)
