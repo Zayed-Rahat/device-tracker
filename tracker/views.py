@@ -1,5 +1,5 @@
 from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated
 from .models import Company, Device, Employee, DeviceAssign
 from .serializers import (
    UserSerializer, CompanySerializer, DeviceSerializer, EmployeeSerializer, DeviceAssignSerializer
@@ -7,12 +7,11 @@ from .serializers import (
 
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import serializers
 
 
 
 class UserAPIView(RetrieveAPIView):
-    permission_classes = (IsAuthenticated,)
+    permission_classes = [IsAuthenticated]
     serializer_class = UserSerializer
 
     def get_object(self):
@@ -31,6 +30,7 @@ class CompanyRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
     
+    
 
 # Employee Views
 
@@ -43,6 +43,8 @@ class EmployeeListCreateView(generics.ListCreateAPIView):
 class EmployeeRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+    
+
     
 
 
@@ -68,6 +70,7 @@ class DeviceRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DeviceSerializer
     
 
+    
 
 class DeviceAssignView(generics.UpdateAPIView):
     queryset = DeviceAssign.objects.all()

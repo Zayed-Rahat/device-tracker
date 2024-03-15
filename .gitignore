@@ -15,3 +15,6 @@ db.sqlite3
 *.pyc
 media/
 tracker/migrations/*
+
+pytest.ini
+.pytest_cache

@@ -23,13 +23,13 @@ urlpatterns = [
     path('devices/<int:pk>/', DeviceRetrieveUpdateDestroyView.as_view(), name='device-retrieve-update-destroy'),
     path('devices/<int:pk>/assign/', DeviceAssignView.as_view(), name='device-assign'),
 
-
-    # for api authentications
-    path('api-auth/', include('rest_framework.urls')),
-
     # for swagger
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+
+    # Automated API documentation
+    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+
   
 
 ]
